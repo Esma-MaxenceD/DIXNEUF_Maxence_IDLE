@@ -36,7 +36,6 @@ public class CardReader : MonoBehaviour
     public float degat = 0;
 
     public bool Auto;
-    public float sauvDegatAuto;
     public float degatinfiger = 0;
     public float degatAuto;
 

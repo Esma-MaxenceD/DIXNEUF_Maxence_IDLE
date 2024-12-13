@@ -67,7 +67,7 @@ public class ScoreManager : MonoBehaviour
     public void ChangeSpellCard(float moreSpellCard)
     {
         _spellCard += moreSpellCard;
-        spellCardText.text = _spellCard.ToString();
+        spellCardText.text = "SpellCard : " + _spellCard.ToString();
     }
 
     public void RiseSpellCard(float spellCard)
@@ -78,7 +78,7 @@ public class ScoreManager : MonoBehaviour
     public void ChangeArgent(float moreArgent)
     {
         _argent += moreArgent;
-        argentText.text = _argent.ToString();
+        argentText.text = "Argent : " + _argent.ToString();
     }
 
     public void RiseArgent(float argent)

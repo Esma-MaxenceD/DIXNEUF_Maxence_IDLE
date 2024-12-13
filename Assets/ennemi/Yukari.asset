@@ -15,4 +15,4 @@ MonoBehaviour:
   ennemiName: Yukari
   hpBase: 20
   spellCard: 80
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 917f1dbf0c478dc44a27de9ce10a21e4, type: 3}

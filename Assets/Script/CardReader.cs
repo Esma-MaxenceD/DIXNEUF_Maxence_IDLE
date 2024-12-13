@@ -16,7 +16,7 @@ public class CardReader : MonoBehaviour
     [SerializeField]
     private Image _cardImage;
 
-
+    private IEnumerator coroutine;
 
     [SerializeField]
     private CreateEnnemi _currentCard;
@@ -35,12 +35,19 @@ public class CardReader : MonoBehaviour
     public float chanceCritique = 0;
     public float degat = 0;
 
+    public bool Auto;
+    public float sauvDegatAuto;
+    public float degatinfiger = 0;
+    public float degatAuto;
 
     void Start()
     {
         _scoreManager = FindObjectOfType<ScoreManager>();
         ReadCard(_deck[ennemiNomber]);
-        
+
+        coroutine = WaitAndPrint();
+        StartCoroutine(coroutine);
+
     }
 
     public void ReduceHp()
@@ -127,5 +134,36 @@ public class CardReader : MonoBehaviour
         {
             degat = degatinfigerclic;
         }
+    }
+
+    private IEnumerator WaitAndPrint()
+    {
+        while (true)
+        {
+
+            degaAutomatique();
+            yield return new WaitForSeconds(1);
+
+        }
+    }
+
+    public void plusDegaAutomatique()
+    {
+        degatAuto++;
+    }
+
+    public void degaAutomatique()
+    {
+        if(Auto)
+        {
+            _currentHp -= degatAuto;
+            _hpText.text = _currentHp.ToString("00");
+            hpEnnemi.fillAmount = _currentHp / hpMax;
+        }
+    }
+    public void Automatique()
+    {
+        Auto = ! Auto;
+        
     }
 }

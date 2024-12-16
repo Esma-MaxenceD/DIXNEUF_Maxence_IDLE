@@ -8,13 +8,13 @@ public class ScoreManager : MonoBehaviour
 
 
     [SerializeField]
-    private float _spellCard;
+    private float spellCard;
     [SerializeField]
-    private float _argent;
+    public float argent;
     [SerializeField]
-    private TextMeshProUGUI spellCardText;
+    public TextMeshProUGUI spellCardText;
     [SerializeField]
-    private TextMeshProUGUI argentText;
+    public TextMeshProUGUI argentText;
     [SerializeField]
     private TextMeshProUGUI upgradeCirno;
     [SerializeField]
@@ -66,8 +66,8 @@ public class ScoreManager : MonoBehaviour
 
     public void ChangeSpellCard(float moreSpellCard)
     {
-        _spellCard += moreSpellCard;
-        spellCardText.text = "SpellCard : " + _spellCard.ToString();
+        spellCard += moreSpellCard;
+        spellCardText.text = "SpellCard : " + spellCard.ToString();
     }
 
     public void RiseSpellCard(float spellCard)
@@ -77,8 +77,8 @@ public class ScoreManager : MonoBehaviour
 
     public void ChangeArgent(float moreArgent)
     {
-        _argent += moreArgent;
-        argentText.text = "Argent : " + _argent.ToString();
+        argent += moreArgent;
+        argentText.text = "Argent : " + argent.ToString();
     }
 
     public void RiseArgent(float argent)
@@ -117,11 +117,11 @@ public class ScoreManager : MonoBehaviour
 
     public void AmeliorationCirno()
     {
-        if (_spellCard >= prixUpgradeCirno)
+        if (spellCard >= prixUpgradeCirno)
         {
-            _spellCard -= prixUpgradeCirno;
-            Debug.Log(_spellCard);
-            spellCardText.text = _spellCard.ToString();
+            spellCard -= prixUpgradeCirno;
+            Debug.Log(spellCard);
+            spellCardText.text = spellCard.ToString();
             prixUpgradeCirno += prixUpgradeCirno + 2;
             upgradeCirno.text = prixUpgradeCirno.ToString();
             cashCirno += 1;
@@ -130,11 +130,11 @@ public class ScoreManager : MonoBehaviour
 
     public void AmeliorationAya()
     {
-        if (_spellCard >= prixUpgradeAya)
+        if (spellCard >= prixUpgradeAya)
         {
-            _spellCard -= prixUpgradeAya;
-            Debug.Log(_spellCard);
-            spellCardText.text = _spellCard.ToString();
+            spellCard -= prixUpgradeAya;
+            Debug.Log(spellCard);
+            spellCardText.text = spellCard.ToString();
             prixUpgradeAya += prixUpgradeAya + 2;
             upgradeAya.text = prixUpgradeAya.ToString();
             cashAya += 1;

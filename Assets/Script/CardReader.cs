@@ -1,12 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Random;
 using UnityEngine.UI;
 using TMPro;
 using System.Security.Cryptography;
+using static UnityEngine.GraphicsBuffer;
+using System;
 
 public class CardReader : MonoBehaviour
 {
+
+    public ScoreManager scoreManager;
+
+    public float PrixUpgardeAutoAttack = 20;
+    [SerializeField]
+    private TextMeshProUGUI prixAutoAttack;
+
+    public float PrixUpgardAttackCritique = 20;
+    private float PourcentageDeCritique = 2;
+    [SerializeField]
+    private TextMeshProUGUI prixAttackCritique;
+
+    public float PrixUpgardeAttack = 20;
+    [SerializeField]
+    private TextMeshProUGUI prixAttack;
+
 
     private float _currentHp;
     private string _nameEnnemi;
@@ -44,22 +63,22 @@ public class CardReader : MonoBehaviour
         _scoreManager = FindObjectOfType<ScoreManager>();
         ReadCard(_deck[ennemiNomber]);
 
+        prixAutoAttack.text = PrixUpgardeAutoAttack + "$".ToString();
+        prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
+        prixAttack.text = PrixUpgardeAttack + "$".ToString();
+
         coroutine = WaitAndPrint();
         StartCoroutine(coroutine);
 
     }
 
-    public void ReduceHp()
+    public void changementCard()
     {
-        degatclic();
-        _currentHp -= degat;
-        _hpText.text = _currentHp.ToString("00");
-        hpEnnemi.fillAmount = _currentHp / hpMax;
         if (_currentHp <= 0)
         {
             card = _currentCard.spellCard;
             _scoreManager.RiseSpellCard(card);
-            if(_nameEnnemi == "Cirno")
+            if (_nameEnnemi == "Cirno")
             {
                 _scoreManager.TrueCirno();
                 //Debug.Log("sa peut marcher");
@@ -100,6 +119,16 @@ public class CardReader : MonoBehaviour
         }
     }
 
+    public void ReduceHp()
+    {
+        degatclic();
+        _currentHp -= degat;
+        _hpText.text = _currentHp.ToString("00");
+        hpEnnemi.fillAmount = _currentHp / hpMax;
+        changementCard();
+        
+    }
+
     private void ReadCard(CreateEnnemi newCard)
     {
         _currentCard = newCard;
@@ -117,14 +146,12 @@ public class CardReader : MonoBehaviour
         
     }
 
-
-
-
     public void degatclic()
     {
-        chanceCritique = Random.Range(0, 100);
+        chanceCritique = (UnityEngine.Random.Range(PourcentageDeCritique, 100));
+        
 
-        if (chanceCritique <= 25)
+        if (chanceCritique >= 75)
         {
             degat = degatinfigerclic * 2;
             //Debug.Log("critique");
@@ -146,9 +173,52 @@ public class CardReader : MonoBehaviour
         }
     }
 
-    public void plusDegaAutomatique()
+    public void PlusDegaAutomatique()
     {
-        degatAuto++;
+        if (Manager.Instance.scoreManager.argent >= PrixUpgardeAutoAttack)
+        {
+            Manager.Instance.scoreManager.argent -= PrixUpgardeAutoAttack;
+            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardeAutoAttack += 2;
+            prixAttack.text = PrixUpgardeAutoAttack + "$".ToString();
+            degatinfigerclic++;
+        }
+        else
+        {
+       
+        }
+    }
+
+    public void PlusDega()
+    {
+        if (Manager.Instance.scoreManager.argent >= PrixUpgardeAttack)
+        {
+            Manager.Instance.scoreManager.argent -= PrixUpgardeAttack;
+            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardeAttack += 2;
+            prixAttack.text = PrixUpgardeAttack + "$".ToString();
+            degatinfigerclic++;
+        }
+        else
+        {
+
+        }
+    }
+
+    public void PlusChanceDegatCritique()
+    {
+        if (Manager.Instance.scoreManager.argent >= PrixUpgardAttackCritique)
+        {
+            Manager.Instance.scoreManager.argent -= PrixUpgardAttackCritique;
+            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardAttackCritique += 2;
+            prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
+            PourcentageDeCritique += 2;
+        }
+        else
+        {
+
+        }
     }
 
     public void degaAutomatique()
@@ -158,6 +228,7 @@ public class CardReader : MonoBehaviour
             _currentHp -= degatAuto;
             _hpText.text = _currentHp.ToString("00");
             hpEnnemi.fillAmount = _currentHp / hpMax;
+            changementCard();
         }
     }
     public void Automatique()

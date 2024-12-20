@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Random;
+//using static UnityEngine.Random;
 using UnityEngine.UI;
 using TMPro;
 using System.Security.Cryptography;
 using static UnityEngine.GraphicsBuffer;
-using System;
+//using namespace System.Random;
 
 public class CardReader : MonoBehaviour
 {
 
     public ScoreManager scoreManager;
+    public int ennemiR;
 
     public float PrixUpgardeAutoAttack = 20;
     [SerializeField]
@@ -62,6 +63,7 @@ public class CardReader : MonoBehaviour
     {
         _scoreManager = FindObjectOfType<ScoreManager>();
         ReadCard(_deck[ennemiNomber]);
+        ennemiNomber++; 
 
         prixAutoAttack.text = PrixUpgardeAutoAttack + "$".ToString();
         prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
@@ -114,8 +116,12 @@ public class CardReader : MonoBehaviour
                 //Debug.Log("sa peut marcher");
             }
 
-            ennemiNomber++;
-            ReadCard(_deck[ennemiNomber]);
+            
+
+            ennemiR = Random.Range(0, ennemiNomber);
+            ReadCard(_deck[ennemiR]);
+
+            
         }
     }
 
@@ -127,6 +133,12 @@ public class CardReader : MonoBehaviour
         hpEnnemi.fillAmount = _currentHp / hpMax;
         changementCard();
         
+    }
+
+    public void EnnemiPlus()
+    {
+        ennemiNomber++;
+        Debug.Log(ennemiNomber);
     }
 
     private void ReadCard(CreateEnnemi newCard)
@@ -168,6 +180,7 @@ public class CardReader : MonoBehaviour
         {
 
             degaAutomatique();
+            ennemiR = Random.Range(0, ennemiNomber);
             yield return new WaitForSeconds(1);
 
         }
@@ -181,11 +194,11 @@ public class CardReader : MonoBehaviour
             Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
             PrixUpgardeAutoAttack += 2;
             prixAttack.text = PrixUpgardeAutoAttack + "$".ToString();
-            degatinfigerclic++;
+            degatAuto++;
         }
         else
         {
-       
+            Debug.Log("PK?");
         }
     }
 
@@ -198,10 +211,11 @@ public class CardReader : MonoBehaviour
             PrixUpgardeAttack += 2;
             prixAttack.text = PrixUpgardeAttack + "$".ToString();
             degatinfigerclic++;
+            
         }
         else
         {
-
+        
         }
     }
 
@@ -226,6 +240,7 @@ public class CardReader : MonoBehaviour
         if(Auto)
         {
             _currentHp -= degatAuto;
+            Debug.Log("Boom");
             _hpText.text = _currentHp.ToString("00");
             hpEnnemi.fillAmount = _currentHp / hpMax;
             changementCard();

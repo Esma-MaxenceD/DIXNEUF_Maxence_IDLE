@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class panelAmelioration : MonoBehaviour
+public class panelAmeliorationF : MonoBehaviour
 {
 
     public Animator animator;
     public int spawn = 0;
+
     // Start is called before the first frame update
-   
-
-
-    public void spawnPanel()
+    public void spawnPanelF()
     {
         if (spawn == 0)
         {
@@ -33,4 +31,6 @@ public class panelAmelioration : MonoBehaviour
             }
         }
     }
+
+    
 }

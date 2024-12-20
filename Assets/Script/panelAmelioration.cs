@@ -15,7 +15,7 @@ public class panelAmelioration : MonoBehaviour
     {
         if (spawn == 0)
         {
-            Debug.Log("Spawn");
+            //Debug.Log("Spawn");
             animator.SetInteger("spawn", 1);
             spawn = 1;
         }
@@ -23,7 +23,7 @@ public class panelAmelioration : MonoBehaviour
         {
             if (spawn == 1)
             {
-                Debug.Log("Despawn");
+               // Debug.Log("Despawn");
                 animator.SetInteger("spawn", 0);
                 spawn = 0;
 

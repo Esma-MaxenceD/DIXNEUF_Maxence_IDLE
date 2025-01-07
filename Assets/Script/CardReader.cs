@@ -17,15 +17,19 @@ public class CardReader : MonoBehaviour
     public float PrixUpgardeAutoAttack = 20;
     [SerializeField]
     private TextMeshProUGUI prixAutoAttack;
+    public TextMeshProUGUI autoAttack;
 
     public float PrixUpgardAttackCritique = 20;
     private float PourcentageDeCritique = 2;
     [SerializeField]
     private TextMeshProUGUI prixAttackCritique;
+    public TextMeshProUGUI attackCritique;
 
     public float PrixUpgardeAttack = 20;
     [SerializeField]
     private TextMeshProUGUI prixAttack;
+    public TextMeshProUGUI attack;
+
 
 
     private float _currentHp;
@@ -66,8 +70,11 @@ public class CardReader : MonoBehaviour
         ennemiNomber++; 
 
         prixAutoAttack.text = PrixUpgardeAutoAttack + "$".ToString();
+        autoAttack.text = "Amelioration Auto-Attack (" + degatAuto + ")".ToString();
         prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
-        prixAttack.text = PrixUpgardeAttack + "$".ToString();
+        attackCritique.text = "Amelioration du Pourcentage Attack Critique (" + PourcentageDeCritique + "% )".ToString();
+        prixAttack.text = PrixUpgardeAttack + "$".ToString(); attack.text = "Amelioration Attack (" + degatinfigerclic + ")".ToString();
+
 
         coroutine = WaitAndPrint();
         StartCoroutine(coroutine);
@@ -129,7 +136,7 @@ public class CardReader : MonoBehaviour
     {
         degatclic();
         _currentHp -= degat;
-        _hpText.text = _currentHp.ToString("00");
+        _hpText.text = "HP : " + _currentHp.ToString("00");
         hpEnnemi.fillAmount = _currentHp / hpMax;
         changementCard();
         
@@ -150,7 +157,7 @@ public class CardReader : MonoBehaviour
         hpEnnemi.fillAmount = _currentHp / hpMax;
         _nameEnnemi = _currentCard.ennemiName;
 
-        _hpText.text = _currentCard.hpBase.ToString("00");
+        _hpText.text = "HP : " + _currentCard.hpBase.ToString("00");
         _nameText.text = _currentCard.ennemiName.ToString();
 
         _cardImage.sprite = _currentCard.cardImage;
@@ -195,6 +202,7 @@ public class CardReader : MonoBehaviour
             PrixUpgardeAutoAttack += 2;
             prixAttack.text = PrixUpgardeAutoAttack + "$".ToString();
             degatAuto++;
+            autoAttack.text = "Amelioration Auto-Attack (" + degatAuto + ")".ToString();
         }
         else
         {
@@ -211,7 +219,8 @@ public class CardReader : MonoBehaviour
             PrixUpgardeAttack += 2;
             prixAttack.text = PrixUpgardeAttack + "$".ToString();
             degatinfigerclic++;
-            
+            attack.text = "Amelioration Attack (" + degatinfigerclic + ")".ToString();
+
         }
         else
         {
@@ -228,6 +237,7 @@ public class CardReader : MonoBehaviour
             PrixUpgardAttackCritique += 2;
             prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
             PourcentageDeCritique += 2;
+            attackCritique.text = "Amelioration du Pourcentage Attack Critique (" + PourcentageDeCritique + "% )".ToString();
         }
         else
         {
@@ -241,7 +251,7 @@ public class CardReader : MonoBehaviour
         {
             _currentHp -= degatAuto;
             Debug.Log("Boom");
-            _hpText.text = _currentHp.ToString("00");
+            _hpText.text = "HP : " + _currentCard.hpBase.ToString("00");
             hpEnnemi.fillAmount = _currentHp / hpMax;
             changementCard();
         }

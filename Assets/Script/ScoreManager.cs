@@ -87,13 +87,13 @@ public class ScoreManager : MonoBehaviour
         PrixupgradeYukari.text = prixUpgradeYukari.ToString();
         PrixupgradeRemilia.text = prixUpgradeRemilia.ToString();
 
-        upgradeCirno.text = "Amélioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
-        upgradeAya.text = "Amélioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
-        upgradeSuika.text = "Amélioration de la Suika Fumo : +6 (" + cashSuika + ")".ToString();
-        upgradeReimu.text = "Amélioration de la Reimu Fumo : +8 (" + cashReimu + ")".ToString();
-        upgradeKaguya.text = "Amélioration de la Kaguya Fumo : +10 (" + cashKaguya + ")".ToString();
-        upgradeYukari.text = "Amélioration de la Yukari Fumo : +12 (" + cashYukari + ")".ToString();
-        upgradeRemilia.text = "Amélioration de la Remilia Fumo : +14 (" + cashRemilia + ")".ToString();
+        upgradeCirno.text = "Amelioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
+        upgradeAya.text = "Amelioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
+        upgradeSuika.text = "Amelioration de la Suika Fumo : +6 (" + cashSuika + ")".ToString();
+        upgradeReimu.text = "Amelioration de la Reimu Fumo : +8 (" + cashReimu + ")".ToString();
+        upgradeKaguya.text = "Amelioration de la Kaguya Fumo : +10 (" + cashKaguya + ")".ToString();
+        upgradeYukari.text = "Amelioration de la Yukari Fumo : +12 (" + cashYukari + ")".ToString();
+        upgradeRemilia.text = "Amelioration de la Remilia Fumo : +14 (" + cashRemilia + ")".ToString();
 
     }
 
@@ -183,7 +183,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AmeliorationCirno()
     {
-        if (spellCard >= prixUpgradeCirno)
+        if (spellCard >= prixUpgradeCirno && Cirno)
         {
             spellCard -= prixUpgradeCirno;
             Debug.Log(spellCard);
@@ -191,7 +191,7 @@ public class ScoreManager : MonoBehaviour
             prixUpgradeCirno += 2;
             PrixupgradeCirno.text = prixUpgradeCirno.ToString();
             cashCirno += 2;
-            upgradeCirno.text = "Amélioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
+            upgradeCirno.text = "Amelioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
         }
     }
 
@@ -206,76 +206,76 @@ public class ScoreManager : MonoBehaviour
             prixUpgradeAya += 4;
             PrixupgradeAya.text = prixUpgradeAya.ToString();
             cashAya += 4;
-            upgradeAya.text = "Amélioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
+            upgradeAya.text = "Amelioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
         }
     }
     public void AmeliorationSuika()
     {
-        if (spellCard >= prixUpgradeSuika)
+        if (spellCard >= prixUpgradeSuika && Suika)
         {
             spellCard -= prixUpgradeSuika;
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeSuika += 6;
             PrixupgradeSuika.text = prixUpgradeSuika.ToString();
-            cashAya += 6;
-            upgradeSuika.text = "Amélioration de la Suika Fumo : +6 (" + cashSuika + ")".ToString();
+            cashSuika += 6;
+            upgradeSuika.text = "Amelioration de la Suika Fumo : +6 (" + cashSuika + ")".ToString();
         }
     }
 
     public void AmeliorationReimu()
     {
-        if (spellCard >= prixUpgradeReimu)
+        if (spellCard >= prixUpgradeReimu && Reimu)
         {
             spellCard -= prixUpgradeReimu;
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeReimu += 8;
             PrixupgradeReimu.text = prixUpgradeReimu.ToString();
-            cashAya += 8;
-            upgradeReimu.text = "Amélioration de la Reimu Fumo : +8 (" + cashReimu + ")".ToString();
+            cashReimu += 8;
+            upgradeReimu.text = "Amelioration de la Reimu Fumo : +8 (" + cashReimu + ")".ToString();
         }
     }
 
     public void AmeliorationKaguya()
     {
-        if (spellCard >= prixUpgradeKaguya)
+        if (spellCard >= prixUpgradeKaguya && Kaguya)
         {
             spellCard -= prixUpgradeKaguya;
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeKaguya += prixUpgradeKaguya + 10;
-            PrixupgradeAya.text = prixUpgradeKaguya.ToString();
-            cashAya += 10;
-            upgradeKaguya.text = "Amélioration de la Kaguya Fumo : +10 (" + cashKaguya + ")".ToString();
+            PrixupgradeKaguya.text = prixUpgradeKaguya.ToString();
+            cashReimu += 10;
+            upgradeKaguya.text = "Amelioration de la Kaguya Fumo : +10 (" + cashKaguya + ")".ToString();
         }
     }
 
     public void AmeliorationYukari()
     {
-        if (spellCard >= prixUpgradeYukari)
+        if (spellCard >= prixUpgradeYukari && Yukari)
         {
             spellCard -= prixUpgradeYukari;
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeYukari += prixUpgradeYukari + 10;
             PrixupgradeYukari.text = prixUpgradeYukari.ToString();
-            cashAya += 12;
-            upgradeYukari.text = "Amélioration de la Yukari Fumo : +12 (" + cashYukari + ")".ToString();
+            cashYukari += 12;
+            upgradeYukari.text = "Amelioration de la Yukari Fumo : +12 (" + cashYukari + ")".ToString();
         }
     }
 
     public void AmeliorationRemilia()
     {
-        if (spellCard >= prixUpgradeRemilia)
+        if (spellCard >= prixUpgradeRemilia && Remilia)
         {
             spellCard -= prixUpgradeRemilia;
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeRemilia += prixUpgradeRemilia + 10;
             PrixupgradeRemilia.text = prixUpgradeRemilia.ToString();
-            cashAya += 14;
-            upgradeRemilia.text = "Amélioration de la Remilia Fumo : +14 (" + cashRemilia + ")".ToString();
+            cashRemilia += 14;
+            upgradeRemilia.text = "Amelioration de la Remilia Fumo : +14 (" + cashRemilia + ")".ToString();
         }
     }
 
@@ -291,27 +291,27 @@ public class ScoreManager : MonoBehaviour
             }
             if (Aya == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashAya);
             }
             if (Suika == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashSuika);
             }
             if (Reimu == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashReimu);
             }
             if (Kaguya == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashKaguya);
             }
             if (Yukari == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashYukari);
             }
             if(Remilia == true)
             {
-                RiseArgent(1);
+                RiseArgent(cashRemilia);
             }
 
             yield return new WaitForSeconds(1);

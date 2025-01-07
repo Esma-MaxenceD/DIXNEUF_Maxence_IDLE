@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b13de27183ebfe34792aaff0c85e9433
+guid: 22ac2701c10f22145891c776bc27706f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI Foret_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1077
+        width: 836
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97c077594efb3a44874780b09c512be
+      internalID: -1968337359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Foret_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1632
+        width: 1460
+        height: 1216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ba60173b9bccf40a4cf6107035beba
+      internalID: -1534187210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Foret_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 3140
+        width: 679
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e1fa0938eeaf24fbd98d6363f32638
+      internalID: -1761975030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Foret_3
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 3140
+        width: 678
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082b8934d209b84458de0af0778839d6
+      internalID: -1788976853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI Foret_0: -1968337359
+      UI Foret_1: -1534187210
+      UI Foret_2: -1761975030
+      UI Foret_3: -1788976853
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

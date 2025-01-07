@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b13de27183ebfe34792aaff0c85e9433
+guid: 9bf0390bc90dff641930987aeca44af6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,7 +108,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI 2_0
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1630
+        width: 1459
+        height: 1218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9d29a8abaedd34eacea059b8dd633d
+      internalID: 1755255360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI 2_1
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 1802
+        width: 288
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac16104abc6181844aceb8283d89ad0f
+      internalID: -435694386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI 2_2
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 1566
+        width: 286
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbbe3052653888439c2b2165954cdc3
+      internalID: 1183379317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI 2_0: 1755255360
+      UI 2_1: -435694386
+      UI 2_2: 1183379317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

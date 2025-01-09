@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Kaguya
   m_EditorClassIdentifier: 
   ennemiName: Kaguya
-  hpBase: 20
+  hpBase: 1000
   spellCard: 50
   cardImage: {fileID: 21300000, guid: 7fef332a7bd62a2478ad9cd7a8a8c5f7, type: 3}

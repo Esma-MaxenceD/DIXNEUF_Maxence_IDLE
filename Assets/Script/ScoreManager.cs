@@ -11,11 +11,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private float spellCard;
     [SerializeField]
-    public float argent;
+    public int argent;
+    [SerializeField]
+    private float score;
     [SerializeField]
     public TextMeshProUGUI spellCardText;
     [SerializeField]
     public TextMeshProUGUI argentText;
+    [SerializeField]
+    public TextMeshProUGUI scoreText;
     [SerializeField]
     private TextMeshProUGUI PrixupgradeCirno;
     public TextMeshProUGUI upgradeCirno;
@@ -79,13 +83,13 @@ public class ScoreManager : MonoBehaviour
         StartCoroutine(coroutine);
 
 
-        PrixupgradeCirno.text = prixUpgradeCirno.ToString();
-        PrixupgradeAya.text = prixUpgradeAya.ToString();
-        PrixupgradeSuika.text = prixUpgradeSuika.ToString();
-        PrixupgradeReimu.text = prixUpgradeReimu.ToString();
-        PrixupgradeKaguya.text = prixUpgradeKaguya.ToString();
-        PrixupgradeYukari.text = prixUpgradeYukari.ToString();
-        PrixupgradeRemilia.text = prixUpgradeRemilia.ToString();
+        PrixupgradeCirno.text = prixUpgradeCirno + " $".ToString();
+        PrixupgradeAya.text = prixUpgradeAya + " $".ToString();
+        PrixupgradeSuika.text = prixUpgradeSuika + " $".ToString();
+        PrixupgradeReimu.text = prixUpgradeReimu + " $".ToString();
+        PrixupgradeKaguya.text = prixUpgradeKaguya + " $".ToString();
+        PrixupgradeYukari.text = prixUpgradeYukari + " $".ToString();
+        PrixupgradeRemilia.text = prixUpgradeRemilia + " $".ToString();
 
         upgradeCirno.text = "Amelioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
         upgradeAya.text = "Amelioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
@@ -110,13 +114,46 @@ public class ScoreManager : MonoBehaviour
         ChangeSpellCard(spellCard);
     }
 
-    public void ChangeArgent(float moreArgent)
+    public void ChangeScore(float moreScore)
     {
-        argent += moreArgent;
-        argentText.text = "Argent : " + argent.ToString();
+        score += moreScore;
+        scoreText.text = "Score : " + score.ToString();
+
+    }
+    
+    public void RiseScoreCard(float score)
+    {
+        ChangeScore(score);
+        Debug.Log("Test");
     }
 
-    public void RiseArgent(float argent)
+    public void ChangeArgent(int moreArgent)
+    {
+        argent += moreArgent;
+        if (argent >= 1000)
+        {
+            argentText.text = "Argent : " + (argent / 1000) + " K";
+        }
+        else
+        {
+            argentText.text = "Argent : " + argent.ToString();
+        }
+    }
+
+    public void ChangeArgentAmelioration(int argentAme)
+    {
+        argent = argentAme;
+        if (argent >= 1000)
+        {
+            argentText.text = "Argent : " + (argent / 1000) + " K";
+        }
+        else
+        {
+            argentText.text = "Argent : " + argent.ToString();
+        }
+    }
+        
+    public void RiseArgent(int argent)
     {
         ChangeArgent(argent);
     }
@@ -189,7 +226,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeCirno += 2;
-            PrixupgradeCirno.text = prixUpgradeCirno.ToString();
+            PrixupgradeCirno.text = prixUpgradeCirno + " $".ToString();
             cashCirno += 2;
             upgradeCirno.text = "Amelioration de la Cirno Fumo : +2 (" + cashCirno + ")".ToString();
         }
@@ -204,7 +241,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeAya += 4;
-            PrixupgradeAya.text = prixUpgradeAya.ToString();
+            PrixupgradeAya.text = prixUpgradeAya + " $".ToString();
             cashAya += 4;
             upgradeAya.text = "Amelioration de la Aya Fumo : +4 (" + cashAya + ")".ToString();
         }
@@ -217,7 +254,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeSuika += 6;
-            PrixupgradeSuika.text = prixUpgradeSuika.ToString();
+            PrixupgradeSuika.text = prixUpgradeSuika + " $".ToString();
             cashSuika += 6;
             upgradeSuika.text = "Amelioration de la Suika Fumo : +6 (" + cashSuika + ")".ToString();
         }
@@ -231,7 +268,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeReimu += 8;
-            PrixupgradeReimu.text = prixUpgradeReimu.ToString();
+            PrixupgradeReimu.text = prixUpgradeReimu + " $".ToString();
             cashReimu += 8;
             upgradeReimu.text = "Amelioration de la Reimu Fumo : +8 (" + cashReimu + ")".ToString();
         }
@@ -245,7 +282,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeKaguya += prixUpgradeKaguya + 10;
-            PrixupgradeKaguya.text = prixUpgradeKaguya.ToString();
+            PrixupgradeKaguya.text = prixUpgradeKaguya + " $".ToString();
             cashReimu += 10;
             upgradeKaguya.text = "Amelioration de la Kaguya Fumo : +10 (" + cashKaguya + ")".ToString();
         }
@@ -259,7 +296,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeYukari += prixUpgradeYukari + 10;
-            PrixupgradeYukari.text = prixUpgradeYukari.ToString();
+            PrixupgradeYukari.text = prixUpgradeYukari + " $".ToString();
             cashYukari += 12;
             upgradeYukari.text = "Amelioration de la Yukari Fumo : +12 (" + cashYukari + ")".ToString();
         }
@@ -273,7 +310,7 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(spellCard);
             spellCardText.text = "SpellCard : " + spellCard.ToString();
             prixUpgradeRemilia += prixUpgradeRemilia + 10;
-            PrixupgradeRemilia.text = prixUpgradeRemilia.ToString();
+            PrixupgradeRemilia.text = prixUpgradeRemilia + " $".ToString();
             cashRemilia += 14;
             upgradeRemilia.text = "Amelioration de la Remilia Fumo : +14 (" + cashRemilia + ")".ToString();
         }

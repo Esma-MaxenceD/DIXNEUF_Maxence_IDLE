@@ -14,18 +14,18 @@ public class CardReader : MonoBehaviour
     public ScoreManager scoreManager;
     public int ennemiR;
 
-    public float PrixUpgardeAutoAttack = 20;
+    public int PrixUpgardeAutoAttack = 20;
     [SerializeField]
     private TextMeshProUGUI prixAutoAttack;
     public TextMeshProUGUI autoAttack;
 
-    public float PrixUpgardAttackCritique = 20;
-    private float PourcentageDeCritique = 2;
+    public int PrixUpgardAttackCritique = 20;
+    private int PourcentageDeCritique = 2;
     [SerializeField]
     private TextMeshProUGUI prixAttackCritique;
     public TextMeshProUGUI attackCritique;
 
-    public float PrixUpgardeAttack = 20;
+    public int PrixUpgardeAttack = 20;
     [SerializeField]
     private TextMeshProUGUI prixAttack;
     public TextMeshProUGUI attack;
@@ -49,10 +49,13 @@ public class CardReader : MonoBehaviour
     private CreateEnnemi[] _deck;
 
     public Image hpEnnemi;
+    public float _score;
+    public float score;
 
     private ScoreManager _scoreManager;
     public int ennemiNomber = 0;
-    private float card = 0;
+    private float cardSpell = 0;
+    private float cardScore = 0;
 
     public float hpMax = 1;
     public float degatinfigerclic = 1;
@@ -85,8 +88,14 @@ public class CardReader : MonoBehaviour
     {
         if (_currentHp <= 0)
         {
-            card = _currentCard.spellCard;
-            _scoreManager.RiseSpellCard(card);
+            cardSpell = _currentCard.spellCard;
+            Debug.Log(cardSpell);
+            _scoreManager.RiseSpellCard(cardSpell);
+            cardScore = _currentCard.score;
+            Debug.Log(cardScore);
+            _scoreManager.RiseScoreCard(cardScore);
+
+
             if (_nameEnnemi == "Cirno")
             {
                 _scoreManager.TrueCirno();
@@ -145,7 +154,7 @@ public class CardReader : MonoBehaviour
     public void EnnemiPlus()
     {
         ennemiNomber++;
-        Debug.Log(ennemiNomber);
+        //Debug.Log(ennemiNomber);
     }
 
     private void ReadCard(CreateEnnemi newCard)
@@ -161,6 +170,9 @@ public class CardReader : MonoBehaviour
         _nameText.text = _currentCard.ennemiName.ToString();
 
         _cardImage.sprite = _currentCard.cardImage;
+
+        _score = _currentCard.score;
+        score = _score;
 
         
     }
@@ -198,9 +210,10 @@ public class CardReader : MonoBehaviour
         if (Manager.Instance.scoreManager.argent >= PrixUpgardeAutoAttack)
         {
             Manager.Instance.scoreManager.argent -= PrixUpgardeAutoAttack;
-            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
-            PrixUpgardeAutoAttack += 2;
-            prixAttack.text = PrixUpgardeAutoAttack + "$".ToString();
+            Manager.Instance.scoreManager.ChangeArgentAmelioration(Manager.Instance.scoreManager.argent);
+            //Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardeAutoAttack += (PrixUpgardeAutoAttack/2);
+            prixAutoAttack.text = PrixUpgardeAutoAttack + "$".ToString();
             degatAuto++;
             autoAttack.text = "Amelioration Auto-Attack (" + degatAuto + ")".ToString();
         }
@@ -215,8 +228,9 @@ public class CardReader : MonoBehaviour
         if (Manager.Instance.scoreManager.argent >= PrixUpgardeAttack)
         {
             Manager.Instance.scoreManager.argent -= PrixUpgardeAttack;
-            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
-            PrixUpgardeAttack += 2;
+            Manager.Instance.scoreManager.ChangeArgentAmelioration(Manager.Instance.scoreManager.argent);
+            //Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardeAttack += (PrixUpgardeAttack/2);
             prixAttack.text = PrixUpgardeAttack + "$".ToString();
             degatinfigerclic++;
             attack.text = "Amelioration Attack (" + degatinfigerclic + ")".ToString();
@@ -233,8 +247,9 @@ public class CardReader : MonoBehaviour
         if (Manager.Instance.scoreManager.argent >= PrixUpgardAttackCritique)
         {
             Manager.Instance.scoreManager.argent -= PrixUpgardAttackCritique;
-            Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
-            PrixUpgardAttackCritique += 2;
+            Manager.Instance.scoreManager.ChangeArgentAmelioration(Manager.Instance.scoreManager.argent);
+            //Manager.Instance.scoreManager.argentText.text = "Argent : " + Manager.Instance.scoreManager.argent.ToString();
+            PrixUpgardAttackCritique += (PrixUpgardAttackCritique/2);
             prixAttackCritique.text = PrixUpgardAttackCritique + "$".ToString();
             PourcentageDeCritique += 2;
             attackCritique.text = "Amelioration du Pourcentage Attack Critique (" + PourcentageDeCritique + "% )".ToString();
@@ -251,7 +266,7 @@ public class CardReader : MonoBehaviour
         {
             _currentHp -= degatAuto;
             Debug.Log("Boom");
-            _hpText.text = "HP : " + _currentCard.hpBase.ToString("00");
+            _hpText.text = "HP : " + _currentHp.ToString("00");
             hpEnnemi.fillAmount = _currentHp / hpMax;
             changementCard();
         }

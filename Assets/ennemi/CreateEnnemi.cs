@@ -12,6 +12,7 @@ public class CreateEnnemi : ScriptableObject
     public float hpBase;
     public float spellCard;
     public Sprite cardImage;
+    public int score;
 }
 
 

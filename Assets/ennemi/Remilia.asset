@@ -16,3 +16,4 @@ MonoBehaviour:
   hpBase: 5000
   spellCard: 100
   cardImage: {fileID: 21300000, guid: 9e0a38bde5dbafd4a9e29bd041b8253b, type: 3}
+  score: 170
